@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formulir Input</title>
+    <!-- SCRIPT VUE JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="styleInput.css" />
+    <!-- MY CSS BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!--! LOADING -->
+      <div class="d-flex justify-content-center sp">
+        <div class="spinner-border text-warning" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+      <!--! LOADING -->
+      <div id="form" class="vh">
+        <div class="container bg-info inp-1">
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">kode</span>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
+              v-model="kode"
+            />
+          </div>
+          <p class="ms-5" style="color: red" v-show="showDisplayKode">
+            isi kode dengan benar
+          </p>
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >nama</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              v-model="nama"
+            />
+          </div>
+          <p class="ms-5" style="color: red" v-show="showDisplayNama">
+            isi nama dengan benar
+          </p>
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-lg"
+              >harga</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-lg"
+              v-model="harga"
+            />
+          </div>
+          <p class="ms-5" style="color: red" v-show="showDisplayHarga">
+            isi harga dengan benar
+          </p>
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >jumlah</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
+              v-model="jumlah"
+            />
+          </div>
+          <p class="ms-5" style="color: red" v-show="showDisplayJumlah">
+            isi jumlah dengan benar
+          </p>
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >total</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
+              v-model="total"
+            />
+          </div>
+          <p class="ms-5" style="color: red" v-show="showDisplayTotal">
+            isi total dengan benar
+          </p>
+          <p class="ms-5" style="color: red" v-show="isiData">
+            isi data dengan benar
+          </p>
+          <button type="submit" class="btn btn-primary me-3" @click="addTodo()">
+            Submit
+          </button>
+          <button type="submit" class="btn btn-primary">cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!--! FOOTER -->
+    <footer class="mt-5">
+      <div class="container-fluid bg-info">FOOTER</div>
+    </footer>
+    <!--! FOOTER END-->
+
+    <!-- MY SCRIPT JS -->
+    <script src="scriptInput.js"></script>
+
+    <!-- SCRIPT JS BOOTSTRAP -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

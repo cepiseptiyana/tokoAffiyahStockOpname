@@ -9,11 +9,10 @@ const app = Vue.createApp({
       jumlah: "",
       total: "",
       dataBarang: [],
-      showDisplayKode: true,
-      showDisplayNama: true,
-      showDisplayHarga: true,
-      showDisplayJumlah: true,
-      showDisplayTotal: true,
+      showDisplayKode: false,
+      showDisplayNama: false,
+      showDisplayHarga: false,
+      showDisplayJumlah: false,
       isiData: false,
     };
   },
@@ -27,12 +26,26 @@ const app = Vue.createApp({
         total: this.total,
       };
       if (
-        this.kode.length < 2 ||
-        this.nama.length < 2 ||
-        this.harga.length < 2 ||
-        this.jumlah.length < 2 ||
-        this.total.length < 2
+        this.kode.length == 0 ||
+        this.nama.length === 0 ||
+        this.harga.length === 0 ||
+        this.jumlah.length === 0
       ) {
+        if (this.kode.length != 0) {
+          this.showDisplayKode = false;
+        } else {
+          this.showDisplayKode = true;
+        }
+        if (this.nama.length != 0) {
+          this.showDisplayNama = false;
+        } else {
+          this.showDisplayNama = true;
+        }
+        if (this.harga != 0) {
+          this.showDisplayHarga = false;
+        } else {
+          this.showDisplayHarga = true;
+        }
         this.isiData = true;
       } else {
         // ! DATA BARANG = ARRAY DI UBAH MENJADI JSON
@@ -44,33 +57,7 @@ const app = Vue.createApp({
       }
     },
   },
-  watch: {
-    kode(value) {
-      value != 0
-        ? (this.showDisplayKode = false)
-        : (this.showDisplayKode = true);
-    },
-    nama(value) {
-      value != 0
-        ? (this.showDisplayNama = false)
-        : (this.showDisplayNama = true);
-    },
-    harga(value) {
-      value != 0
-        ? (this.showDisplayHarga = false)
-        : (this.showDisplayHarga = true);
-    },
-    jumlah(value) {
-      value != 0
-        ? (this.showDisplayJumlah = false)
-        : (this.showDisplayJumlah = true);
-    },
-    total(value) {
-      value != 0
-        ? (this.showDisplayTotal = false)
-        : (this.showDisplayTotal = true);
-    },
-  },
+  watch: {},
 });
 
 app.mount("#form");

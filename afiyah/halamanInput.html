@@ -28,7 +28,9 @@
       <div id="form" class="vh">
         <div class="container bg-info inp-1">
           <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-sm">kode</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >idBarang</span
+            >
             <input
               type="text"
               class="form-control"
@@ -38,11 +40,11 @@
             />
           </div>
           <p class="ms-5" style="color: red" v-show="showDisplayKode">
-            isi kode dengan benar
+            isi idBarang dengan benar
           </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default"
-              >nama</span
+              >namaBarang</span
             >
             <input
               type="text"
@@ -57,7 +59,7 @@
           </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-lg"
-              >harga</span
+              >hargaBarang</span
             >
             <input
               type="text"
@@ -72,7 +74,7 @@
           </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"
-              >jumlah</span
+              >jumlahBarang</span
             >
             <input
               type="text"
@@ -84,21 +86,6 @@
           </div>
           <p class="ms-5" style="color: red" v-show="showDisplayJumlah">
             isi jumlah dengan benar
-          </p>
-          <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-sm"
-              >total</span
-            >
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-sm"
-              v-model="total"
-            />
-          </div>
-          <p class="ms-5" style="color: red" v-show="showDisplayTotal">
-            isi total dengan benar
           </p>
           <p class="ms-5" style="color: red" v-show="isiData">
             isi data dengan benar

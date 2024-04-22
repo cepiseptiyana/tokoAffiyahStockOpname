@@ -48,11 +48,14 @@ const app = Vue.createApp({
         }
         this.isiData = true;
       } else {
-        // ! DATA BARANG = ARRAY DI UBAH MENJADI JSON
+        // ! ISI DATA BARANG = ARRAY DI UBAH MENJADI JSON
 
         this.dataBarang.push(dataBarang);
         let a = JSON.stringify(this.dataBarang);
         console.log(a);
+        this.showDisplayKode = false;
+        this.showDisplayNama = false;
+        this.showDisplayHarga = false;
         this.isiData = false;
       }
     },

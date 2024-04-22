@@ -53,6 +53,9 @@ const app = Vue.createApp({
         this.dataBarang.push(dataBarang);
         let a = JSON.stringify(this.dataBarang);
         console.log(a);
+        this.showDisplayKode = false;
+        this.showDisplayNama = false;
+        this.showDisplayHarga = false;
         this.isiData = false;
       }
     },

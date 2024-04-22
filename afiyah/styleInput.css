@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-/* LOADING */
+/*! LOADING */
 .sp {
   position: fixed;
   width: 100%;
@@ -21,7 +21,35 @@
   visibility: hidden;
 }
 
-/* LOADING END */
+/*! LOADING END */
+
+/*! NAVBAR */
+
+#app {
+  min-height: 100vh;
+}
+
+#app .c-2 {
+  padding: 0 2em;
+  border-radius: 0.5em;
+}
+
+#app .c-2 .logo {
+  color: white;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+#app .c-2 .btn {
+  border: 1px solid rgb(125, 125, 125, 0.5);
+}
+
+#app .c-2 .btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* ! FORM INPUT */
 
 .vh {
   min-height: 100vh;
@@ -37,10 +65,12 @@
   text-transform: capitalize;
 }
 
+/* ! FORM INPUT END */
+
 /*! RESPONSIVE */
 
 /* HANDPHONE */
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 800px) {
   #app .inp-1 {
     width: 400px;
   }

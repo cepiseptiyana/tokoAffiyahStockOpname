@@ -8,7 +8,26 @@ const app = Vue.createApp({
       harga: "",
       jumlah: "",
       total: "",
-      dataBarang: [],
+      dataBarang: [
+        {
+          idBarang: "p02",
+          namaBarang: "pulpen",
+          hargaBarang: "2500",
+          jumlahBarang: "200",
+        },
+        {
+          idBarang: "p13",
+          namaBarang: "buku",
+          hargaBarang: "2500",
+          jumlahBarang: "200",
+        },
+        {
+          idBarang: "p42",
+          namaBarang: "penghapus",
+          hargaBarang: "2500",
+          jumlahBarang: "200",
+        },
+      ],
       showDisplayKode: false,
       showDisplayNama: false,
       showDisplayHarga: false,

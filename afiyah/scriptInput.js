@@ -68,7 +68,6 @@ const app = Vue.createApp({
         this.isiData = true;
       } else {
         // ! ISI DATA BARANG = ARRAY DI UBAH MENJADI JSON
-
         this.dataBarang.push(dataBarang);
         let a = JSON.stringify(this.dataBarang);
         console.log(a);

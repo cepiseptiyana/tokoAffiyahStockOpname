@@ -54,7 +54,24 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="halamanInput.html">stock opname.</a>
+                <a class="nav-link" href="halamanInput.html">barang masuk</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="barangTerjual.html">barang terjual</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="../dataBarangMasuk/dataBarangMasuk.html"
+                  >data barang masuk</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="../dataBarangMasuk/dataBarangTerjual.html"
+                  >data barang terjual</a
+                >
               </li>
             </ul>
           </div>
@@ -66,7 +83,7 @@
       <div id="form" class="vh bg-success-subtle">
         <div class="container bg-info inp-1">
           <h1 class="text-center">stock barang</h1>
-          <p>silahkan isi data barang : masuk dan keluar</p>
+          <p>silahkan isi data barang : masuk</p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"
               >kode Barang</span
@@ -79,9 +96,6 @@
               v-model="kode"
             />
           </div>
-          <p class="ms-5" style="color: red" v-show="showDisplayKode">
-            isi idBarang dengan benar
-          </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default"
               >nama barang</span
@@ -94,12 +108,9 @@
               v-model="nama"
             />
           </div>
-          <p class="ms-5" style="color: red" v-show="showDisplayNama">
-            isi nama dengan benar
-          </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-lg"
-              >harga satuan Barang</span
+              >jumlah barang masuk</span
             >
             <input
               type="text"
@@ -109,12 +120,9 @@
               v-model="harga"
             />
           </div>
-          <p class="ms-5" style="color: red" v-show="showDisplayHarga">
-            isi harga dengan benar
-          </p>
           <div class="input-group input-group-lg mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"
-              >jumlah barang masuk</span
+              >total harga beli barang</span
             >
             <input
               type="text"
@@ -124,19 +132,19 @@
               v-model="jumlah"
             />
           </div>
-          <p class="ms-5" style="color: red" v-show="showDisplayJumlah">
-            isi jumlah dengan benar
-          </p>
-          <p class="ms-5" style="color: red" v-show="isiData">
-            isi data dengan benar
-          </p>
-          <button
-            type="submit"
-            class="btn btn-primary me-3 submit"
-            @click="addTodo()"
-          >
-            Submit
-          </button>
+          <div class="input-group input-group-lg mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >tanggal</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
+              v-model="totalBeli"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary me-3">Submit</button>
           <button type="submit" class="btn btn-primary">cancel</button>
         </div>
       </div>

@@ -1,22 +1,7 @@
 {
-  "Search": [
-    {
-      "idBarang": "P100",
-      "namaBarang": "pulpen",
-      "hargaBarang": "3000",
-      "stockBarang": "200"
-    },
-    {
-      "idBarang": "P200",
-      "namaBarang": "buku",
-      "hargaBarang": "3000",
-      "stockBarang": "200"
-    },
-    {
-      "idBarang": "P300",
-      "namaBarang": "map",
-      "hargaBarang": "3000",
-      "stockBarang": "200"
-    }
-  ]
+  "kode": "",
+  "nama": "",
+  "jumlahBarangTerjual": "",
+  "jumlahHargaTerjual": "",
+  "tanggal": ""
 }

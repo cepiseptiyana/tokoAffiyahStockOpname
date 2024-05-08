@@ -46,14 +46,14 @@
     <!--! NAVBAR END-->
 
     <!--! VIEW BARANG -->
-    <div class="container bg-info view">
+    <div class="container mt-5 view">
       <h1
         class="text-center"
         style="text-transform: capitalize; margin-bottom: 15px"
       >
         data barang masuk
       </h1>
-      <table class="table" id="table">
+      <table class="table overflow-scroll" id="table">
         <thead>
           <tr class="text-center">
             <th scope="col">no</th>
@@ -62,29 +62,30 @@
             <th scope="col">jumlah barang masuk</th>
             <th scope="col">total harga beli Barang</th>
             <th scope="col">tanggal</th>
+            <th scope="col">status</th>
           </tr>
         </thead>
         <tbody>
           <% if (contacts.length == 0) { %>
           <tr>
-            <td colspan="4">
+            <td colspan="7">
               <div class="alert alert-danger" role="alert">
-                <b>data contacts kosong mass</b>
+                <b>data contacts kosong ;</b>
               </div>
             </td>
           </tr>
-          <% } else {%> <% contacts.forEach(contact => { %>
+          <% } else {%> <% contacts.forEach((contact,index) => { %>
           <tr class="text-center">
-            <th scope="row">1</th>
+            <th scope="row"><%= index + 1 %></th>
             <td><%= contact.kodeBarang %></td>
             <td><%= contact.namaBarang %></td>
             <td><%= contact.jumlahBarangMasuk %></td>
             <td><%= contact.totalHargaBeliBarang %></td>
             <td><%= contact.tanggal %></td>
+            <td><a href="" class="btn btn-danger">delete</a></td>
           </tr>
-          <% }) %>
+          <% }) %> <% } %>
         </tbody>
-        <% } %>
       </table>
     </div>
     <!--! VIEW BARANG END-->

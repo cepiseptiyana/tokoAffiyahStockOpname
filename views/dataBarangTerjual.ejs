@@ -46,7 +46,7 @@
     <!--! NAVBAR END-->
 
     <!--! VIEW BARANG -->
-    <div class="container bg-info view">
+    <div class="container view mt-5">
       <h1
         class="text-center"
         style="text-transform: capitalize; margin-bottom: 15px"
@@ -65,14 +65,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="text-center">
-            <th scope="row">1</th>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
-            <td>data</td>
+          <% if (barangTerjual.length == 0) { %>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger" role="alert">
+                <b>data contacts kosong ;</b>
+              </div>
+            </td>
           </tr>
+          <% } else { %> <% barangTerjual.forEach((barangT,index) => { %>
+          <tr class="text-center">
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= barangT.kodeBarang %></td>
+            <td><%= barangT.namaBarang %></td>
+            <td><%= barangT.jumlahBarangTerjual %></td>
+            <td><%= barangT.jumlahHargaTerjual %></td>
+            <td><%= barangT.tanggal %></td>
+          </tr>
+          <% }) %> <% } %>
         </tbody>
       </table>
     </div>

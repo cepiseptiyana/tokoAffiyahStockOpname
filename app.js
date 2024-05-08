@@ -3,8 +3,10 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 3000;
 
-// ! TANGKAP EXPORT MODULE "LOCAL"
-const { laodContact, addContact } = require("./utils/operasiContact");
+// ! TANGKAP EXPORT DARI UTILS "OPERASI BARANG MASUK"
+const { laodContact, addContact } = require("./utils/operasiBarangMasuk");
+// ! TANGKAP EXPORT DARI UTILS "OPERASI BARANG TERJUAL"
+const { dataBarangs, addBarangs } = require("./utils/operasiBarangTerjual");
 
 // ! parse data form
 app.use(express.urlencoded());
@@ -13,12 +15,26 @@ app.use(expressLayouts);
 // ! views engine expressJS menggunakan "ejs"
 app.set("view engine", "ejs");
 
+// ! EXPRESS JS MEMILIKI FILE STATIC SEPERTI = FILE,VIDEO,GAMBAR DLL
+// ! panggil module
+app.use(express.static("public"));
+
+// ! METHOD "POST" FORM DATA BARANG MASUK
 app.post("/dataBarangMasuk", (req, res) => {
   console.log(req.body);
   addContact(req.body);
   // ! redirect = dia akan menangani bukan POST tapi GET
   // ! redirect = refresh ke halaman tersebut =>
   res.redirect("/dataBarangMasuk");
+});
+
+// ! METHOD "POST" FORM DATA BARANG TERJUAL
+app.post("/barangTerjual", (req, res) => {
+  console.log(req.body);
+  addBarangs(req.body);
+  // ! redirect = dia akan menangani bukan POST tapi GET
+  // ! redirect = refresh ke halaman tersebut =>
+  res.redirect("/dataBarangTerjual");
 });
 
 // ! midleware/root = home
@@ -57,14 +73,17 @@ app.get("/dataBarangMasuk", (req, res) => {
 });
 
 app.get("/dataBarangTerjual", (req, res) => {
+  const barangTerjual = dataBarangs();
   res.render("dataBarangTerjual", {
     layout: "layouts/main-layout.ejs",
     title: "halaman barangTerjual",
+    barangTerjual,
   });
 });
 
+// ! ketika halaman url salah / gada => tampilkan error
 app.use("/", (req, res) => {
-  res.send("ERROR ;404");
+  res.send("<h1>error ; 404</h1>");
 });
 
 app.listen(port, () => {

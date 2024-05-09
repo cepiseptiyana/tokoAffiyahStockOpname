@@ -23,5 +23,11 @@ function addContact(contact) {
   saveContacts(contacts);
 }
 
+// ! cek nama yang duplikat
+function cekDuplikat(nama) {
+  const contacts = laodContact();
+  return contacts.find((contact) => contact.kodeBarang === nama);
+}
+
 // ! EXPORT MODULE LOCAL
-module.exports = { laodContact, addContact };
+module.exports = { laodContact, addContact, cekDuplikat };

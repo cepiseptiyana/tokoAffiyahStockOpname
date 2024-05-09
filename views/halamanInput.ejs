@@ -46,8 +46,21 @@
   <div id="form" class="vh bg-success-subtle">
     <div class="container bg-info mt-5 inp-1">
       <h1 class="text-center">stock barang</h1>
+      <!-- ! jika type "erros" ga undefined maka kondisi ga dijalankan,berarti gada eror -->
+      <% if (typeof errors != "undefined") { %>
+      <!-- ! alert BOOTSTRAP -->
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <!-- ! foreach isi array errors -->
+          <!-- ! isi dari array errors adalah object dan key nya msg,param,location,value -->
+          <% errors.forEach((error,index) => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
       <p>silahkan isi data barang : masuk</p>
-      <form method="post" action="/dataBarangMasuk">
+      <form method="post" action="/halamanInput">
         <div class="mb-3">
           <label for="kodeBarang" class="form-label">kode barang</label>
           <!-- ! required = wajib isi input -->

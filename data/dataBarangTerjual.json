@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "kodeBarang": "123",
+    "namaBarang": "pulpen",
+    "jumlahBarangTerjual": "2",
+    "jumlahHargaTerjual": "50000",
+    "tanggal": "5/9/2024"
+  }
+]

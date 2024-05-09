@@ -1,1 +1,9 @@
-[{"kodeBarang":"ew","namaBarang":"ewq","jumlahBarangMasuk":"ew","totalHargaBeliBarang":"q","tanggal":"w"}]
+[
+  {
+    "kodeBarang": "123",
+    "namaBarang": "pulpen",
+    "jumlahBarangMasuk": "23",
+    "totalHargaBeliBarang": "20000",
+    "tanggal": "5/9/2024"
+  }
+]

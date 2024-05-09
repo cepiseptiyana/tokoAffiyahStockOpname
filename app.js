@@ -2,9 +2,15 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 3000;
+// ! module validator@6.10.1
+const { body, validationResult, check } = require("express-validator");
 
 // ! TANGKAP EXPORT DARI UTILS "OPERASI BARANG MASUK"
-const { laodContact, addContact } = require("./utils/operasiBarangMasuk");
+const {
+  laodContact,
+  addContact,
+  cekDuplikat,
+} = require("./utils/operasiBarangMasuk");
 // ! TANGKAP EXPORT DARI UTILS "OPERASI BARANG TERJUAL"
 const { dataBarangs, addBarangs } = require("./utils/operasiBarangTerjual");
 
@@ -20,13 +26,45 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // ! METHOD "POST" FORM DATA BARANG MASUK
-app.post("/dataBarangMasuk", (req, res) => {
-  console.log(req.body);
-  addContact(req.body);
-  // ! redirect = dia akan menangani bukan POST tapi GET
-  // ! redirect = refresh ke halaman tersebut =>
-  res.redirect("/dataBarangMasuk");
-});
+app.post(
+  "/halamanInput",
+  [
+    body("kodeBarang").custom((value) => {
+      const duplikat = cekDuplikat(value);
+      if (duplikat) {
+        throw new Error("kode barang sudah digunakan, gunakan kode lain!");
+      }
+      return;
+    }),
+    check("namaBarang", "wajib isi nama barang").isLength({ min: 2 }),
+    check("jumlahBarangMasuk", "wajib isi jumlah barang").isLength({ min: 2 }),
+    check("totalHargaBeliBarang", "wajib isi total harga beli barang").isLength(
+      {
+        min: 3,
+      }
+    ),
+    check("tanggal", "wajib isi tanggal").isLength({ min: 5 }),
+  ],
+  (req, res) => {
+    // ! tangkap error
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // ! jika error balik ke halaman input
+      res.render("halamanInput", {
+        title: "form data tambah contact",
+        layout: "layouts/main-layout",
+        // isi dari errors.array() = array
+        errors: errors.array(),
+      });
+    } else {
+      console.log(req.body);
+      addContact(req.body);
+      // ! redirect = dia akan menangani bukan POST tapi GET
+      // ! redirect = refresh ke halaman tersebut =>
+      res.redirect("/dataBarangMasuk");
+    }
+  }
+);
 
 // ! METHOD "POST" FORM DATA BARANG TERJUAL
 app.post("/barangTerjual", (req, res) => {

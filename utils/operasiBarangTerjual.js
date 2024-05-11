@@ -23,5 +23,11 @@ function addBarangs(contact) {
   saveContacts(contacts);
 }
 
+// ! cek nama yang duplikat
+function cekDuplikatBrTerjual(nama) {
+  const contacts = dataBarangs();
+  return contacts.find((contact) => contact.kodeBarang === nama);
+}
+
 // ! EXPORT MODULE LOCAL
-module.exports = { dataBarangs, addBarangs };
+module.exports = { dataBarangs, addBarangs, cekDuplikatBrTerjual };

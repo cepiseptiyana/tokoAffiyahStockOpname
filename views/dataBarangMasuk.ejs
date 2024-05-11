@@ -82,7 +82,14 @@
             <td><%= contact.jumlahBarangMasuk %></td>
             <td><%= contact.totalHargaBeliBarang %></td>
             <td><%= contact.tanggal %></td>
-            <td><a href="" class="btn btn-danger">delete</a></td>
+            <td>
+              <a
+                href="/dataBarangMasuk/delete/<%= contact.kodeBarang %>"
+                class="btn btn-danger"
+                onclick="return confirm('yakin?')"
+                >delete</a
+              >
+            </td>
           </tr>
           <% }) %> <% } %>
         </tbody>

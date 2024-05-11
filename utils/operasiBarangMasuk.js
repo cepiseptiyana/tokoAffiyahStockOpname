@@ -29,5 +29,34 @@ function cekDuplikat(nama) {
   return contacts.find((contact) => contact.kodeBarang === nama);
 }
 
+// ! mencari dataBarang
+function findContact(kdBarang) {
+  const dataBarangMasuk = laodContact();
+  // ! jika kodeBarang sama akan mengembalikan object
+  // ! method find ga mengembalikan array baru
+  const dataBarang = dataBarangMasuk.find((barang) => {
+    return barang.kodeBarang === kdBarang;
+  });
+  return dataBarang;
+}
+
+// ! menghapus dataBarang
+function deleteContact(kodeBarang) {
+  const dataBarangMasukJson = laodContact();
+  // ! variabel filterContact mengembalikan array baru
+  let filterContact = dataBarangMasukJson.filter((barang) => {
+    return barang.kodeBarang !== kodeBarang;
+  });
+  // ! masukan data baru ke file dataBarang.json
+  saveContacts(filterContact);
+  console.log(filterContact);
+}
+
 // ! EXPORT MODULE LOCAL
-module.exports = { laodContact, addContact, cekDuplikat };
+module.exports = {
+  laodContact,
+  addContact,
+  cekDuplikat,
+  findContact,
+  deleteContact,
+};

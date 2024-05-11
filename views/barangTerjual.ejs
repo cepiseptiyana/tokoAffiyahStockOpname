@@ -49,6 +49,18 @@
     <div id="form" class="vh bg-success-subtle">
       <div class="container bg-info mt-5 inp-1">
         <h1 class="text-center">barang terjual</h1>
+        <% if (typeof errors != "undefined") { %>
+        <!-- ! alert BOOTSTRAP -->
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <!-- ! foreach isi array errors -->
+            <!-- ! isi dari array errors adalah object dan key nya msg,param,location,value -->
+            <% errors.forEach((error,index) => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
         <p>silahkan isi data barang : terjual</p>
         <form method="post" action="/barangTerjual">
           <div class="mb-3">

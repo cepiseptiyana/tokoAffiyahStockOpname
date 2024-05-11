@@ -10,9 +10,15 @@ const {
   laodContact,
   addContact,
   cekDuplikat,
+  findContact,
+  deleteContact,
 } = require("./utils/operasiBarangMasuk");
 // ! TANGKAP EXPORT DARI UTILS "OPERASI BARANG TERJUAL"
-const { dataBarangs, addBarangs } = require("./utils/operasiBarangTerjual");
+const {
+  dataBarangs,
+  addBarangs,
+  cekDuplikatBrTerjual,
+} = require("./utils/operasiBarangTerjual");
 
 // ! parse data form
 app.use(express.urlencoded());
@@ -34,10 +40,13 @@ app.post(
       if (duplikat) {
         throw new Error("kode barang sudah digunakan, gunakan kode lain!");
       }
-      return;
+      // ! error ini me return true jika gada error/duplikat kodebarang
+      return true;
     }),
     check("namaBarang", "wajib isi nama barang").isLength({ min: 2 }),
-    check("jumlahBarangMasuk", "wajib isi jumlah barang").isLength({ min: 2 }),
+    check("jumlahBarangMasuk", "wajib isi jumlah barang dan isi dengan angka")
+      .isLength({ min: 2 })
+      .isNumeric(),
     check("totalHargaBeliBarang", "wajib isi total harga beli barang").isLength(
       {
         min: 3,
@@ -57,7 +66,6 @@ app.post(
         errors: errors.array(),
       });
     } else {
-      console.log(req.body);
       addContact(req.body);
       // ! redirect = dia akan menangani bukan POST tapi GET
       // ! redirect = refresh ke halaman tersebut =>
@@ -67,13 +75,45 @@ app.post(
 );
 
 // ! METHOD "POST" FORM DATA BARANG TERJUAL
-app.post("/barangTerjual", (req, res) => {
-  console.log(req.body);
-  addBarangs(req.body);
-  // ! redirect = dia akan menangani bukan POST tapi GET
-  // ! redirect = refresh ke halaman tersebut =>
-  res.redirect("/dataBarangTerjual");
-});
+app.post(
+  "/barangTerjual",
+  [
+    body("kodeBarang").custom((value) => {
+      const duplikat = cekDuplikatBrTerjual(value);
+      if (duplikat) {
+        throw new Error("kode barang sudah digunakan, gunakan kode lain!");
+      }
+      // ! error ini me return true jika gada error/duplikat kodebarang
+      return true;
+    }),
+    check("namaBarang", "wajib isi nama barang").isLength({ min: 2 }),
+    check("jumlahBarangTerjual", "wajib isi jumlah barang dan isi dengan angka")
+      .isLength({
+        min: 2,
+      })
+      .isNumeric(),
+    check("jumlahHargaTerjual", "wajib isi dengan angka").isNumeric(),
+    check("tanggal", "wajib isi tanggal").isLength({ min: 5 }),
+  ],
+  (req, res) => {
+    // ! tangkap error
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // ! jika error balik ke halaman input
+      res.render("barangTerjual", {
+        title: "form data barang terjual",
+        layout: "layouts/main-layout",
+        // isi dari errors.array() = array
+        errors: errors.array(),
+      });
+    } else {
+      addBarangs(req.body);
+      // ! redirect = dia akan menangani bukan POST tapi GET
+      // ! redirect = refresh ke halaman tersebut =>
+      res.redirect("/dataBarangTerjual");
+    }
+  }
+);
 
 // ! midleware/root = home
 app.get("/home", (req, res) => {
@@ -108,6 +148,22 @@ app.get("/dataBarangMasuk", (req, res) => {
     layout: "layouts/main-layout.ejs",
     contacts,
   });
+});
+
+// ! delete data barang masuk
+app.get("/dataBarangMasuk/delete/:kodeBarang", (request, response) => {
+  // ! databarangs berisi object sesuai KodeBarang
+  const dataBarangs = findContact(request.params.kodeBarang);
+  // ! jika data barang undefined atau nama kodeBarang ga ditemukan atau gada kembalikan error
+  if (!dataBarangs) {
+    // ! kembalikan status error 404
+    response.status(404);
+    response.send("kode barang tidak ditemukan!");
+  } else {
+    // ! delete kontak dengan jalankan fungsi deleteContact =>
+    deleteContact(dataBarangs.kodeBarang);
+    response.redirect("/dataBarangMasuk");
+  }
 });
 
 app.get("/dataBarangTerjual", (req, res) => {

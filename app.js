@@ -32,26 +32,35 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // ! METHOD "POST" FORM DATA BARANG MASUK
+// ! ada 3 parameter = root / halaman, pengecekan / validator input, callback request dan resonse express.js
 app.post(
   "/halamanInput",
+  // ! Pengecekan pada input kodeBarang apakah ada kode yang duplikat
+  // ! parameter body harus sama dengan atribut name di element input kodeBarang
   [
     body("kodeBarang").custom((value) => {
       const duplikat = cekDuplikat(value);
+      // ! jika kodeBarang tidak ada duplikat maka jangan buat pesan error
+      // ! jika ada duplikat tuliskan error berikut ini
       if (duplikat) {
         throw new Error("kode barang sudah digunakan, gunakan kode lain!");
       }
       // ! error ini me return true jika gada error/duplikat kodebarang
       return true;
     }),
+    // ! pengecekan input namaBarang wajib isi minimal 2 karakter
     check("namaBarang", "wajib isi nama barang").isLength({ min: 2 }),
+    // ! pengecekan input jumlahBarangMasuk wajib isi minimal 2 karakter dan harus isi angka
     check("jumlahBarangMasuk", "wajib isi jumlah barang dan isi dengan angka")
       .isLength({ min: 2 })
       .isNumeric(),
+    // ! pengecekan input totalHargaBeliBarang wajib isi minimal 3 karakter
     check("totalHargaBeliBarang", "wajib isi total harga beli barang").isLength(
       {
         min: 3,
       }
     ),
+    // ! pengecekan input tanggal wajib isi minimal 5 karakter
     check("tanggal", "wajib isi tanggal").isLength({ min: 5 }),
   ],
   (req, res) => {
@@ -66,6 +75,7 @@ app.post(
         errors: errors.array(),
       });
     } else {
+      // ! jika gada error masukan data ke file json menggunakan fungsi 'addContact()'
       addContact(req.body);
       // ! redirect = dia akan menangani bukan POST tapi GET
       // ! redirect = refresh ke halaman tersebut =>
@@ -116,9 +126,9 @@ app.post(
 );
 
 // ! midleware/root = home
-app.get("/home", (req, res) => {
-  res.render("home.ejs", {
-    title: "home",
+app.get("/", (req, res) => {
+  res.render("HalamanInput.ejs", {
+    title: "BarangMasuk",
     layout: "layouts/main-layout.ejs",
   });
 });
@@ -161,7 +171,7 @@ app.get("/dataBarangMasuk/delete/:kodeBarang", (request, response) => {
     response.send("kode barang tidak ditemukan!");
   } else {
     // ! delete kontak dengan jalankan fungsi deleteContact =>
-    deleteContact(dataBarangs.kodeBarang);
+    deleteContact(request.params.kodeBarang);
     response.redirect("/dataBarangMasuk");
   }
 });

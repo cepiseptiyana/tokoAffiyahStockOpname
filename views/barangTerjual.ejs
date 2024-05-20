@@ -1,155 +1,150 @@
-<body>
-  <div id="app" class="bg-success-subtle">
-    <!--! NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid bg-info c-2">
-        <a class="navbar-brand logo" href="#">TokoAfiyah</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul
-            class="navbar-nav me-auto mb-2 mb-lg-0"
-            style="text-transform: capitalize"
+<div id="app" class="bg-success-subtle" style="padding-top: 50px">
+  <!--! NAVBAR -->
+  <nav class="navbar navbar-expand-lg c" style="width: 20%">
+    <div class="container-fluid bg-info c-2" style="display: block">
+      <h1>tokoAfiyah</h1>
+      <!-- button toggle -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse nav-ul mt-5"
+        id="navbarTogglerDemo02"
+      >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="halamanInput">barang masuk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="barangTerjual">barang terjual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dataBarangMasuk">data barang masuk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dataBarangTerjual">data barang terjual</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--! NAVBAR END-->
+
+  <!-- ! FORM INPUT -->
+
+  <div id="form" class="vh bg-success-subtle" style="margin: auto; width: 55%">
+    <div class="container bg-info">
+      <h1 class="text-center">barang terjual</h1>
+      <% if (typeof errors != "undefined") { %>
+      <!-- ! alert BOOTSTRAP -->
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <!-- ! foreach isi array errors -->
+          <!-- ! isi dari array errors adalah object dan key nya msg,param,location,value -->
+          <% errors.forEach((error,index) => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+      <p>silahkan isi data barang : terjual</p>
+      <form method="post" action="/barangTerjual">
+        <div class="mb-3">
+          <label for="kodeBarang" class="form-label">kode barang</label>
+          <!-- ! required = wajib isi input -->
+          <!-- ! atribute name = variable yang akan diisikan ketika kita isi inputnya -->
+          <input
+            type="text"
+            class="form-control"
+            id="kodeBarang"
+            name="kodeBarang"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="namaBarang" class="form-label">nama barang</label>
+          <input
+            type="text"
+            class="form-control"
+            id="namaBarang"
+            name="namaBarang"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="jumlahBarangTerjual" class="form-label"
+            >jumlah barang terjual</label
           >
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home"
-                >&#127968; Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="halamanInput">barang masuk</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="barangTerjual">barang terjual</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dataBarangMasuk">data barang masuk</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dataBarangTerjual"
-                >data barang terjual</a
-              >
-            </li>
-          </ul>
+          <input
+            type="text"
+            class="form-control"
+            id="jumlahBarangTerjual"
+            name="jumlahBarangTerjual"
+            required
+          />
         </div>
-      </div>
-    </nav>
-    <!--! NAVBAR END-->
-
-    <!-- ! FORM INPUT -->
-    <div id="form" class="vh bg-success-subtle">
-      <div class="container bg-info mt-5 inp-1">
-        <h1 class="text-center">barang terjual</h1>
-        <% if (typeof errors != "undefined") { %>
-        <!-- ! alert BOOTSTRAP -->
-        <div class="alert alert-danger" role="alert">
-          <ul>
-            <!-- ! foreach isi array errors -->
-            <!-- ! isi dari array errors adalah object dan key nya msg,param,location,value -->
-            <% errors.forEach((error,index) => { %>
-            <li><%= error.msg %></li>
-            <% }) %>
-          </ul>
+        <div class="mb-3">
+          <label for="jumlahHargaTerjual" class="form-label"
+            >jumlah harga terjual</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="jumlahHargaTerjual"
+            name="jumlahHargaTerjual"
+            required
+          />
         </div>
-        <% } %>
-        <p>silahkan isi data barang : terjual</p>
-        <form method="post" action="/barangTerjual">
-          <div class="mb-3">
-            <label for="kodeBarang" class="form-label">kode barang</label>
-            <!-- ! required = wajib isi input -->
-            <!-- ! atribute name = variable yang akan diisikan ketika kita isi inputnya -->
-            <input
-              type="text"
-              class="form-control"
-              id="kodeBarang"
-              name="kodeBarang"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="namaBarang" class="form-label">nama barang</label>
-            <input
-              type="text"
-              class="form-control"
-              id="namaBarang"
-              name="namaBarang"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="jumlahBarangTerjual" class="form-label"
-              >jumlah barang terjual</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="jumlahBarangTerjual"
-              name="jumlahBarangTerjual"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="jumlahHargaTerjual" class="form-label"
-              >jumlah harga terjual</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="jumlahHargaTerjual"
-              name="jumlahHargaTerjual"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="tanggal" class="form-label"> tanggal</label>
-            <input
-              type="text"
-              class="form-control"
-              id="tanggal"
-              name="tanggal"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">
-            tambah data contact
-          </button>
-        </form>
-      </div>
+        <div class="mb-3">
+          <label for="tanggal" class="form-label"> tanggal</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tanggal"
+            name="tanggal"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          tambah data contact
+        </button>
+      </form>
     </div>
-    <!-- ! FORM INPUT END -->
   </div>
+  <!-- ! FORM INPUT END -->
+</div>
 
-  <!--! FOOTER -->
-  <footer class="mt-5">
-    <div class="container-fluid text-center bg-secondary">
-      <div class="row">
-        <div class="col-sm">
-          <div class="container">
-            <h5 style="text-transform: capitalize">tentang kami</h5>
-            <h6>alamat :</h6>
-            <p>&#127978; V97J+CQ Renged, Kabupaten Serang, Banten</p>
-          </div>
+<!--! FOOTER -->
+<footer style="position: relative; z-index: 9999">
+  <div class="container-fluid text-center bg-secondary">
+    <div class="row">
+      <div class="col-sm">
+        <div class="container">
+          <h5 style="text-transform: capitalize">tentang kami</h5>
+          <h6>alamat :</h6>
+          <a href="https://maps.app.goo.gl/QrKaGvXUDhe3ZHV3A"
+            >&#127978; V97J+CQ Renged, Kabupaten Serang, Banten</a
+          >
         </div>
-        <div class="col-sm">
-          <div class="container">
-            <h5 style="text-transform: capitalize">layanan</h5>
-          </div>
+      </div>
+      <div class="col-sm">
+        <div class="container">
+          <h5 style="text-transform: capitalize">layanan</h5>
         </div>
-        <div class="col-sm">
-          <div class="container">
-            <h5 style="text-transform: capitalize">&#128383; hubungi</h5>
-          </div>
+      </div>
+      <div class="col-sm">
+        <div class="container">
+          <h5 style="text-transform: capitalize">&#128383; hubungi</h5>
         </div>
       </div>
     </div>
-  </footer>
-</body>
+  </div>
+</footer>

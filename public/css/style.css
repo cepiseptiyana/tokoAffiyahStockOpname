@@ -34,7 +34,7 @@
 }
 
 #app .c-2 .nav-ul ul {
-  font-size: 25px;
+  font-size: 20px;
   display: block;
   margin: auto;
   text-transform: capitalize;
@@ -79,21 +79,21 @@
 /* form data masuk */
 #form {
   text-transform: capitalize;
-  font-size: 20px;
+  margin-left: 260px;
 }
+
 /* form data masuk end*/
 
 /* VIEW-BARANG */
 /* style tabel */
 
 #app .view {
-  background-color: rgb(130, 130, 130);
-  width: 50%;
+  height: 100vh;
+  margin-left: 260px;
 }
 
-#app .view .container {
+#app .view .list {
   height: 200px;
-  overflow-y: scroll;
 }
 
 #app .view #table {

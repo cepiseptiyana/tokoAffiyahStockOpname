@@ -1,6 +1,6 @@
-<div id="app" class="bg-success-subtle" style="padding-top: 50px">
+<div id="app" class="bg-success-subtle" style="padding-top: 20px">
   <!--! NAVBAR -->
-  <nav class="navbar navbar-expand-lg c" style="width: 20%">
+  <nav class="navbar navbar-expand-lg c">
     <div class="container-fluid bg-info c-2" style="display: block">
       <h1>tokoAfiyah</h1>
       <!-- button toggle -->
@@ -39,9 +39,9 @@
   <!--! NAVBAR END-->
 
   <!-- ! FORM INPUT -->
-  <div id="form" class="vh bg-success-subtle" style="margin: auto; width: 55%">
-    <div class="container bg-info">
-      <h1 class="text-center">stock barang</h1>
+  <div id="form" class="vh bg-success">
+    <div class="ps-2">
+      <h1>stock barang</h1>
       <!-- ! jika type "erros" ga undefined maka kondisi ga dijalankan,berarti gada eror -->
       <% if (typeof errors != "undefined") { %>
       <!-- ! alert BOOTSTRAP -->
@@ -58,7 +58,7 @@
       <p>silahkan isi data barang : masuk</p>
       <!-- ! Method Post dan action ke halaman '/halamanInput' -->
       <!-- ! setiap data input sudah diberi atribut name -->
-      <form method="post" action="/halamanInput">
+      <form method="post" action="/halamanInput" class="container ms-0 ps-0">
         <div class="mb-3">
           <label for="kodeBarang" class="form-label">kode barang</label>
           <!-- ! required = wajib isi input -->

@@ -48,9 +48,9 @@
   }
 }
 
-@media screen and (min-width: 425px) and (max-width: 767px) {
+@media screen and (min-width: 200px) and (max-width: 767px) {
   .login .row {
-    width: 70%;
+    width: 80%;
     color: white;
     padding: 20px;
     border-top-left-radius: 15px;

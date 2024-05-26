@@ -5,9 +5,6 @@ const port = 3000;
 // ! module validator@6.10.1
 const { body, validationResult, check } = require("express-validator");
 
-// MYSQL
-let connection = require("./models/mysql.js");
-
 // jalankan koneksi mongoose
 require("./utils/database");
 // database dataBarangMasuk Mongoose
@@ -118,16 +115,11 @@ app.post(
   "/login",
   [
     body("username").custom(async (value, { req }) => {
-      const data = "SELECT * FROM login ";
-      connection.query(data, (errors, result, fields) => {
-        if (value !== result[0].username) {
-          throw new Error(`selamat datang di toko afiyah username salah!`);
-        }
-      });
-      // const user = await login.findOne({ username: "admin" });
-      // if (value !== user.username) {
-      //   throw new Error(`selamat datang di toko afiyah username salah!`);
-      // }
+      const user = await login.findOne({ username: "admin" });
+      if (value !== user.username) {
+        throw new Error(`selamat datang di toko afiyah username salah!`);
+      }
+      return true;
     }),
     body("password").custom(async (value, { req }) => {
       const pass = await login.findOne({ username: "admin" });

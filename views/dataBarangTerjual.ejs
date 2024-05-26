@@ -71,14 +71,14 @@
           <% } else { %> <% barangTerjual.forEach((data,index) => { %>
           <tr>
             <th scope="row"><%= index + 1 %></th>
-            <td><%= data.id %></td>
+            <td><%= data.kodeBarang %></td>
             <td><%= data.namaBarang %></td>
             <td><%= data.jumlahBarangTerjual %></td>
             <td><%= data.jumlahHargaTerjual %></td>
             <td><%= data.tanggal %></td>
             <td>
               <a
-                href="/dataBarangTerjual/delete/<%= data.id %>"
+                href="/dataBarangTerjual/delete/<%= data.kodeBarang %>"
                 class="btn btn-danger"
                 onclick="return confirm('Yakin mennghapus data?')"
                 >delete</a

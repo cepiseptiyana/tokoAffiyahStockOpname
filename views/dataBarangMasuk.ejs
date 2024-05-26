@@ -73,7 +73,7 @@
           <% } else {%> <% dataBarang.forEach((data,index) => { %>
           <tr>
             <th scope="row"><%= index + 1 %></th>
-            <td><%= data.id %></td>
+            <td><%= data.kodeBarang %></td>
             <td><%= data.namaBarang %></td>
             <td><%= data.jumlahBarangMasuk %></td>
             <td><%= data.totalHargaBeliBarang %></td>
@@ -82,7 +82,7 @@
               <!-- ! BUTTON DELETE  -->
               <!-- ! DELETE SESUAI DENGAN KODEBARANG -->
               <a
-                href="/dataBarangMasuk/delete/<%= data.id %>"
+                href="/dataBarangMasuk/delete/<%= data.kodeBarang %>"
                 class="btn btn-danger"
                 onclick="return confirm('Yakin menghapus data?')"
                 >delete</a

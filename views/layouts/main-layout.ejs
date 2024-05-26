@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <!-- CSS cdn DATATABLES BOOTSTRAP -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css"
+    />
 
     <!-- SCRIPT VUE JS -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
     <!-- MY CSS -->
     <!-- ga usah tulis root public -->
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/styleLogin.css" />
 
     <!-- MY CSS BOOTSTRAP -->
     <link
@@ -18,13 +25,26 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
-    <!-- CDN AXIOS -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <!-- ! NAVBAR -->
     <div><%- body %></div>
+
+    <!-- SCRIPT CDN DATABLES BOOTSTRAP-->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#myTable").DataTable({
+          // scroll X
+          scrollX: true,
+        });
+      });
+    </script>
+
+    <!-- My SCRIPT JS -->
+    <!-- script form input and sold -->
+    <script src="../Vue/inputAndSoldStyle.js"></script>
 
     <!-- SCRIPT JS BOOTSTRAP -->
     <script

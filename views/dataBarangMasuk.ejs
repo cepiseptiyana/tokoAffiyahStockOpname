@@ -1,11 +1,12 @@
-<div id="app" class="bg-success-subtle" style="padding-top: 20px">
+<div id="app" class="bg-success-subtle" style="padding-top: 10px">
   <!--! NAVBAR -->
   <nav class="navbar navbar-expand-lg c">
-    <div class="container-fluid bg-info c-2" style="display: block">
+    <div class="container c-2">
       <h1>tokoAfiyah</h1>
       <!-- button toggle -->
       <button
         class="navbar-toggler"
+        id="btn-toggle"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarTogglerDemo02"
@@ -15,10 +16,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse nav-ul mt-5"
-        id="navbarTogglerDemo02"
-      >
+      <div class="collapse navbar-collapse nav-ul" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="halamanInput">barang masuk</a>
@@ -32,6 +30,9 @@
           <li class="nav-item">
             <a class="nav-link" href="dataBarangTerjual">data barang terjual</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -39,48 +40,16 @@
   <!--! NAVBAR END-->
 
   <!--! VIEW BARANG -->
-  <div class="view bg-success">
-    <h1
-      class="text-center"
-      style="text-transform: capitalize; margin-bottom: 15px"
-    >
-      data barang masuk
-    </h1>
+  <div id="form">
+    <div class="h1">
+      <h1>data barang masuk</h1>
+    </div>
 
-    <div class="container list">
-      <div class="mb-2" style="display: flex; justify-content: end">
-        <div style="width: 300px">
-          <div class="row">
-            <div class="col">
-              <label
-                for="namaBarang"
-                class="form-label"
-                style="color: rgb(255, 255, 255); text-transform: capitalize"
-                >cari sesuai kode barang</label
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="col" style="padding: 0">
-              <input
-                placeholder="masukan kode"
-                style="width: 200px"
-                type="text"
-                class="form-control"
-                id="namaBarang"
-                name="namaBarang"
-                required
-              />
-            </div>
-            <div class="col ms-2" style="padding: 0">
-              <button type="submit" class="btn btn-primary">search</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <table class="table" id="table">
+    <div class="list w">
+      <!-- menggunakan datatables bootstrap5 -->
+      <table class="table display table-striped" id="myTable">
         <thead>
-          <tr class="text-center">
+          <tr>
             <th scope="col">no</th>
             <th scope="col">kode Barang</th>
             <th scope="col">nama Barang</th>
@@ -91,29 +60,31 @@
           </tr>
         </thead>
         <tbody>
-          <% if (contacts.length == 0) { %>
+          <% if (dataBarang.length == 0) { %>
           <tr>
-            <td colspan="7">
-              <div class="alert alert-danger" role="alert">
-                <b>data contacts kosong ;</b>
-              </div>
-            </td>
+            <th>1</th>
+            <td>kosong</td>
+            <td>kosong</td>
+            <td>kosong</td>
+            <td>kosong</td>
+            <td>kosong</td>
+            <td>kosong</td>
           </tr>
-          <% } else {%> <% contacts.forEach((contact,index) => { %>
-          <tr class="text-center">
+          <% } else {%> <% dataBarang.forEach((data,index) => { %>
+          <tr>
             <th scope="row"><%= index + 1 %></th>
-            <td><%= contact.kodeBarang %></td>
-            <td><%= contact.namaBarang %></td>
-            <td><%= contact.jumlahBarangMasuk %></td>
-            <td><%= contact.totalHargaBeliBarang %></td>
-            <td><%= contact.tanggal %></td>
+            <td><%= data.id %></td>
+            <td><%= data.namaBarang %></td>
+            <td><%= data.jumlahBarangMasuk %></td>
+            <td><%= data.totalHargaBeliBarang %></td>
+            <td><%= data.tanggal %></td>
             <td>
               <!-- ! BUTTON DELETE  -->
               <!-- ! DELETE SESUAI DENGAN KODEBARANG -->
               <a
-                href="/dataBarangMasuk/delete/<%= contact.kodeBarang %>"
+                href="/dataBarangMasuk/delete/<%= data.id %>"
                 class="btn btn-danger"
-                onclick="return confirm('yakin?')"
+                onclick="return confirm('Yakin menghapus data?')"
                 >delete</a
               >
             </td>
@@ -124,16 +95,30 @@
     </div>
   </div>
   <!--! VIEW BARANG END-->
+
+  <a
+    href="https://wa.me/6285659519463/?text=Hello"
+    style="
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 14px;
+    "
+  >
+    &#169; Cepi Septiyana</a
+  >
 </div>
 
 <!--! FOOTER -->
 <footer style="position: relative; z-index: 9999">
-  <div class="container-fluid text-center bg-secondary">
+  <div class="container-fluid text-center">
     <div class="row">
       <div class="col-sm">
         <div class="container">
           <h5 style="text-transform: capitalize">tentang kami</h5>
-          <h6>alamat :</h6>
+          <h6>Alamat :</h6>
           <a href="https://maps.app.goo.gl/QrKaGvXUDhe3ZHV3A"
             >&#127978; V97J+CQ Renged, Kabupaten Serang, Banten</a
           >
@@ -141,15 +126,10 @@
       </div>
       <div class="col-sm">
         <div class="container">
-          <h5 style="text-transform: capitalize">layanan</h5>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="container">
           <h5 style="text-transform: capitalize">&#128383; hubungi</h5>
+          <a href="https://wa.me/6281212275509/?text=Hello">Pak Anas</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
-<!--! FOOTER END-->

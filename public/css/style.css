@@ -5,32 +5,38 @@
   margin: 0;
 }
 
-/* NAVBAR */
+/*! NAVBAR */
 
 #app {
   min-height: 100vh;
+  position: relative;
 }
 
 #app .c {
   position: fixed;
+  z-index: 9999;
+  display: block;
+  height: 100vh;
   left: 0;
   top: 0;
-  bottom: 0;
-  display: block;
-  padding: 0;
+  background-color: #24262b;
 }
 
-#app .c-2 {
-  height: 100vh;
-  border-radius: 0.5em;
+#app .c .c-2 {
+  display: block;
 }
 
 #app .c-2 h1 {
+  border-bottom: 1px solid rgb(174, 174, 232);
+  margin-bottom: 10px;
   text-align: center;
   text-transform: capitalize;
-  margin-bottom: 15px;
   color: white;
   letter-spacing: 3px;
+}
+
+#app .c-2 .nav-ul {
+  margin-top: 8px;
 }
 
 #app .c-2 .nav-ul ul {
@@ -40,20 +46,18 @@
   text-transform: capitalize;
 }
 
-#app .c-2 .nav-ul ul li {
-  margin-bottom: 20px;
-}
-
 #app .c-2 .nav-ul ul li a {
   position: relative;
   text-align: center;
-  color: rgb(116, 116, 116, 0.9);
+  color: white;
+  transition: 0.3s;
 }
 
 #app .c-2 .nav-ul ul li a:hover {
   position: relative;
   text-align: center;
-  color: black;
+  transform: scale(1.2);
+  margin-bottom: 20px;
 }
 
 #app .c-2 .nav-ul ul li a::after {
@@ -76,31 +80,174 @@
 
 /* NAVBAR END */
 
-/* form data masuk */
+/* form dan table */
 #form {
   text-transform: capitalize;
   margin-left: 260px;
+  border-radius: 10px;
+}
+
+#form .list {
+  color: white;
+  background-color: #0a3b4b;
+  border-top-left-radius: 20px;
+  padding: 10px;
+  width: 930px;
+  margin: auto;
+}
+
+/* style h1 */
+#form h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#form .h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#form .h1 h1 {
+  color: white;
+  background-color: #1aabee;
+  width: 500px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 /* form data masuk end*/
 
-/* VIEW-BARANG */
-/* style tabel */
-
-#app .view {
-  height: 100vh;
-  margin-left: 260px;
+/* ! Footer */
+footer {
+  border-top: 1px white solid;
+  background-color: #24262b;
+  color: white;
 }
 
-#app .view .list {
-  height: 200px;
+footer .row .col-sm .container a {
+  color: white;
+  text-decoration: none;
 }
 
-#app .view #table {
-  border: 1px rgb(0, 0, 0, 0.3) solid;
-  text-transform: capitalize;
+footer .row .col-sm {
+  border-right: #e7e7e7 1px solid;
 }
 
-/* style tabel end*/
+footer .row .col-sm .container a:hover {
+  color: #322dca;
+}
 
-/*! RESPONSIVE */
+/*! RESPONSIVE LAPTOP */
+
+@media screen and (max-width: 1024px) {
+  #form {
+    text-transform: capitalize;
+    margin-left: 240px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  #form .list {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/*! RESPONSIVE IPAD */
+@media screen and (max-width: 768px) {
+  /* bgColor list navbar */
+  #app .c {
+    background-color: rgb(127, 255, 212, 0);
+  }
+
+  /* tambah class list navbar */
+  .click {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #0a3b4b;
+    border-radius: 10px;
+    border: 3px solid green;
+  }
+
+  #app .c .c-2 h1 {
+    position: absolute;
+    bottom: 100%;
+  }
+
+  /* RESPONSIVE toggle klik halaman table dan input */
+  /* container #form */
+  #form {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  /* slide form klik */
+  #form.toggle-form {
+    margin-left: 200px;
+  }
+
+  /* form list input */
+  #form .ps-2 .form-container .mb-3 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ubah size form element input  */
+  #form .list {
+    width: 90%;
+  }
+
+  #form .ps-2 .form-container input {
+    width: 70%;
+  }
+}
+
+/*! RESPONSIVE HANDPHONE */
+@media screen and (max-width: 576px) {
+  #app .c-2 .nav-ul ul {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  #app .c-2 .nav-ul ul li {
+    padding: 0 2px;
+  }
+
+  /* tambah class list navbar */
+  .click {
+    margin-bottom: 10px;
+    background-color: #0a3b4b;
+    border-radius: 10px;
+    border: 1px white solid;
+  }
+  /* nav ul li tag a */
+  #app .c-2 .nav-ul ul li a {
+    font-size: 12px;
+  }
+
+  #form {
+    margin-top: 50px;
+  }
+
+  /* slide form klik */
+  #form.toggle-form {
+    margin-left: 0;
+  }
+
+  /* element input flex */
+  #form .ps-2 .form-container .mb-3 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ubah size form element input  */
+  #form .list {
+    width: 90%;
+  }
+
+  #form .ps-2 .form-container input {
+    width: 50%;
+  }
+}

@@ -1,0 +1,59 @@
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../foto/kmp.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.login .row {
+  width: 30%;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  border-top-left-radius: 15px;
+  border: 1px white solid;
+  box-shadow: 0 20px 8px -10px rgba(240, 240, 240);
+  transition: 0.3s;
+}
+
+.login .row:hover {
+  margin-top: -20px;
+  border-top-left-radius: 0;
+  color: white;
+  box-shadow: 0 65px 10px -55px rgba(240, 240, 240, 0.8);
+}
+
+.login .row .col form .btn-login {
+  color: white;
+  background-color: rgba(38, 190, 0, 0.779);
+  transition: 1s;
+}
+
+.login .row .col form .btn-login:hover {
+  background-color: rgb(65, 207, 29);
+}
+
+/*! RESPONSIVE FORM */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .login .row {
+    width: 50%;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border: 1px white solid;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .login .row {
+    width: 70%;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border: 1px white solid;
+  }
+}

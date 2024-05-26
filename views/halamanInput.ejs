@@ -1,10 +1,11 @@
-<div id="app" class="bg-success-subtle" style="padding-top: 20px">
+<div id="app" class="bg-success-subtle" style="padding-top: 50px">
   <!--! NAVBAR -->
   <nav class="navbar navbar-expand-lg c">
-    <div class="container-fluid bg-info c-2" style="display: block">
+    <div class="container c-2">
       <h1>tokoAfiyah</h1>
       <!-- button toggle -->
       <button
+        id="btn-toggle"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
@@ -15,10 +16,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse nav-ul mt-5"
-        id="navbarTogglerDemo02"
-      >
+      <div class="collapse navbar-collapse nav-ul" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="halamanInput">barang masuk</a>
@@ -32,6 +30,9 @@
           <li class="nav-item">
             <a class="nav-link" href="dataBarangTerjual">data barang terjual</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -39,9 +40,8 @@
   <!--! NAVBAR END-->
 
   <!-- ! FORM INPUT -->
-  <div id="form" class="vh bg-success">
+  <div id="form">
     <div class="ps-2">
-      <h1>stock barang</h1>
       <!-- ! jika type "erros" ga undefined maka kondisi ga dijalankan,berarti gada eror -->
       <% if (typeof errors != "undefined") { %>
       <!-- ! alert BOOTSTRAP -->
@@ -55,24 +55,19 @@
         </ul>
       </div>
       <% } %>
-      <p>silahkan isi data barang : masuk</p>
       <!-- ! Method Post dan action ke halaman '/halamanInput' -->
       <!-- ! setiap data input sudah diberi atribut name -->
-      <form method="post" action="/halamanInput" class="container ms-0 ps-0">
-        <div class="mb-3">
-          <label for="kodeBarang" class="form-label">kode barang</label>
-          <!-- ! required = wajib isi input -->
-          <!-- ! atribute name = variable yang akan diisikan ketika kita isi inputnya -->
-          <input
-            type="text"
-            class="form-control"
-            id="kodeBarang"
-            name="kodeBarang"
-            required
-          />
-        </div>
+      <form
+        method="post"
+        action="/HalamanInput"
+        class="container list form-container"
+      >
+        <h1>input barang</h1>
+        <p>silahkan isi data barang : masuk</p>
         <div class="mb-3">
           <label for="namaBarang" class="form-label">nama barang</label>
+          <!-- ! required = wajib isi input -->
+          <!-- ! atribute name = variable yang akan diisikan ketika kita isi inputnya -->
           <input
             type="text"
             class="form-control"
@@ -102,7 +97,6 @@
             class="form-control"
             id="totalHargaBeliBarang"
             name="totalHargaBeliBarang"
-            required
           />
         </div>
         <div class="mb-3">
@@ -122,17 +116,32 @@
       </form>
     </div>
   </div>
+
   <!-- ! FORM INPUT END -->
+
+  <a
+    href="https://wa.me/6285659519463/?text=Hello"
+    style="
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 14px;
+    "
+  >
+    &#169; Cepi Septiyana</a
+  >
 </div>
 
 <!--! FOOTER -->
 <footer style="position: relative; z-index: 9999">
-  <div class="container-fluid text-center bg-secondary">
+  <div class="container-fluid text-center">
     <div class="row">
       <div class="col-sm">
         <div class="container">
           <h5 style="text-transform: capitalize">tentang kami</h5>
-          <h6>alamat :</h6>
+          <h6>Alamat :</h6>
           <a href="https://maps.app.goo.gl/QrKaGvXUDhe3ZHV3A"
             >&#127978; V97J+CQ Renged, Kabupaten Serang, Banten</a
           >
@@ -140,12 +149,8 @@
       </div>
       <div class="col-sm">
         <div class="container">
-          <h5 style="text-transform: capitalize">layanan</h5>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="container">
           <h5 style="text-transform: capitalize">&#128383; hubungi</h5>
+          <a href="https://wa.me/6281212275509/?text=Hello">Pak Anas</a>
         </div>
       </div>
     </div>

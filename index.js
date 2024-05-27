@@ -1,7 +1,7 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 // ! module validator@6.10.1
 const { body, validationResult, check } = require("express-validator");
 

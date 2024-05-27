@@ -11,7 +11,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "build": "index build --output public",
+    "build": "index build views",
     "start": "npm index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

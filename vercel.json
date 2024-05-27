@@ -1,12 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.*)\\.(js|css|png|jpg|jpeg|gif|ico|svg|map|woff)",
-      "destination": "/$1.$2"
-    }
-  ]
-}
+{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
